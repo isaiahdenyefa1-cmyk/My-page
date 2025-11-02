@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Food Order Website</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: linear-gradient(180deg, #0b132b, #1c2541, #3a506b);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 10;
+  }
+
+  header h1 {
+    color: #00ffff;
+    font-weight: 700;
+    text-shadow: 0 0 10px #00ffff;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    color: #00ffff;
+  }
+
+  .hero {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    padding: 100px 20px;
+    perspective: 1000px;
+  }
+
+  .hero h2 {
+    font-size: 3rem;
+    text-shadow: 0 0 15px #00ffff;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+  }
+
+  .hero button {
+    background: linear-gradient(145deg, #00bcd4, #008c9e);
+    border: none;
+    margin-top: 30px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .hero button:hover {
+    background: linear-gradient(145deg, #00e0ff, #00a1b3);
+    transform: scale(1.1);
+  }
+
+  section {
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  section h3 {
+    font-size: 2.5rem;
+    color: #00ffff;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px #00ffff;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+
+  .card {
+    background: linear-gradient(145deg, #1b2a49, #142850);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5),
+                inset 0 0 15px rgba(0,255,255,0.1);
+    overflow: hidden;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-10px) scale(1.05);
+  }
+
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card h4 {
+    color: #00ffff;
+    margin-top: 15px;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    color: #ccc;
+    padding: 0 15px;
+  }
+
+  .price {
+    font-weight: 700;
+    color: #00e0ff;
+    margin: 10px 0;
+  }
+
+  .order-btn {
+    background: #00bcd4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .order-btn:hover {
+    background: #00e0ff;
+  }
+
+  footer {
+    background: #0b132b;
+    text-align: center;
+    padding: 30px;
+    color: #aaa;
+  }
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+    }
+    .hero h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Foodie<span style="color:#ffce00;">Hub</span></h1>
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Order Delicious Food Anytime 🍔</h2>
+  <p>Fresh, Fast, and Hot! Explore our menu and get your favorite meal delivered to your door.</p>
+  <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Order Now</button>
+</div>
+
+<section id="menu">
+  <h3>🍕 Popular Dishes</h3>
+  <div class="menu">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1601924638867-3ec3bff8f3b4?auto=format&fit=crop&w=800&q=80" alt="Burger">
+      <h4>Cheese Burger</h4>
+      <p>Juicy grilled beef patty topped with melted cheese and fresh veggies.</p>
+      <p class="price">₦2,500</p>
+      <button class="order-btn" onclick="order('Cheese Burger')">Order</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606755962773-0b7b49e50b2c?auto=format&fit=crop&w=800&q=80" alt="Pizza">
+      <h4>Italian Pizza</h4>
+      <p>Hot, cheesy and loaded with pepperoni, olives, and mushrooms.</p>
+      <p class="price">₦3,000</p>
+      <button class="order-btn" onclick="order('Italian Pizza')">Order</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1590080875831-14c9d6c4c2d8?auto=format&fit=crop&w=800&q=80" alt="Pasta">
+      <h4>Spaghetti Bolognese</h4>
+      <p>Rich tomato sauce with ground beef and Italian herbs.</p>
+      <p class="price">₦2,000</p>
+      <button class="order-btn" onclick="order('Spaghetti Bolognese')">Order</button>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h3>About Us</h3>
+  <p>At FoodieHub, we believe food should be fresh, fast, and full of flavor. We deliver delicious meals to your doorstep within minutes!</p>
+</section>
+
+<section id="contact">
+  <h3>Contact Us</h3>
+  <p>📞 +234 812 345 6789</p>
+  <p>📩 foodiehub@gmail.com</p>
+</section>
+
+<footer>
+  © 2025 FoodieHub. All Rights Reserved.
+</footer>
+
+<script>
+  function order(item) {
+    alert(`🍴 Your order for ${item} has been placed successfully!`);
+  }
+</script>
+
+</body>
+</html>
